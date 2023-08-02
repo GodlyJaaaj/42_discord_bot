@@ -9,12 +9,12 @@ from env.load_env import TOKEN
 #--------->  Private token ⚠️ do not share in public
 DISCORD_TOKEN = TOKEN
 CHANNEL_ID = '1135894155374116914' #---------> this is the channel where the bot send message
+CHANNEL_OBJECT = discord.Object(id=CHANNEL_ID)
 #---------> configuring client
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
-my_Activity_Status = ("6 x 7 = 42"
-                      "\n maintened by Sebou") #---------> discord Status
+my_Activity_Status = ("6 x 7 = 42,  maintened by Sebou") #---------> discord Status
 my_Status = discord.Status.online
 #---------> connection du bot et démarrage de la boucle
 @client.event
@@ -27,7 +27,6 @@ async def on_ready():
     scheduler = AsyncIOScheduler()
     scheduler.add_job(send_all_date_reminders, CronTrigger(hour=12, minute=0, second=0))
     scheduler.start()
-    #await all_date_reminders() # Démarrer la boucle pour envoyer le message quotidien à 12h
 #---------> event date :
 events = [
     {
@@ -64,6 +63,6 @@ async def on_message(message):
 #---------> send message to the channel
 async def send_all_date_reminders():
     for event in events:
-        await send_countdown_Message(client.get_channel(int(CHANNEL_ID)), event, event['name'])
+        await send_countdown_Message(CHANNEL_OBJECT, event, event['name'])
 
 client.run(DISCORD_TOKEN)
