@@ -1,7 +1,6 @@
 import discord
 from datetime import datetime
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from apscheduler.triggers.cron import CronTrigger
 
 from commands.countdown_Message import send_countdown_Message
 from env.load_env import TOKEN
@@ -45,10 +44,10 @@ events = [
     },
     {
         'name': 'septembre',
-        'start_Date': datetime(2023, 9, 1, 9, 42, 0),
-        'end_Date': datetime(2023, 10, 1, 18, 0, 0),
-        'id_Check_Date': datetime(2023, 9, 1, 15, 0, 0),
-        'id_Check_End_Date': datetime(2023, 9, 3, 15, 0, 0)
+        'start_Date': datetime(2023, 9, 11, 9, 42, 0),
+        'end_Date': datetime(2023, 10, 6, 18, 0, 0),
+        'id_Check_Date': datetime(2023, 9, 6, 15, 0, 0),
+        'id_Check_End_Date': datetime(2023, 9, 6, 17, 0, 0)
     }
 ]
 #---------> bot command :
